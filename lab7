@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double x1, y1, r1, x2, y2, r2;
+    printf("Введіть координати та радіус першого кола (x1 y1 r1): ");
+    scanf("%lf %lf %lf", &x1, &y1, &r1);
+    printf("Введіть координати та радіус другого кола (x2 y2 r2): ");
+    scanf("%lf %lf %lf", &x2, &y2, &r2);
+
+    // Відстань між центрами кола
+    double distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+
+    // Перевірка умов перетину кола
+    if (distance < r1 + r2) {
+        if (distance > fabs(r1 - r2)) {
+            printf("Кола перетинаються у двох точках\n");
+            return 2;
+        } else if (distance == fabs(r1 - r2)) {
+            printf("Кола торкаються у одній точці\n");
+            return 1;
+        }
+    }
+
+    printf("Кола не перетинаються\n");
+    return 0;
+}
+
