@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+long long countNumbers(int r) {
+    if (r <= 0) {
+        return 0;
+    }
+
+    long long count = 1;
+    long long prevCount = 1;
+
+    for (int i = 2; i <= r; i++) {
+        long long temp = count;
+        count += prevCount; // обчислюємо нову кількість чисел
+        prevCount = temp; // зберігаємо попередню кількість
+    }
+
+    return count;
+}
+
+int main() {
+    int r;
+    printf("Введіть кількість розрядів (р ≤ 30): ");
+    scanf("%d", &r);
+
+    long long result = countNumbers(r);
+
+    printf("Кількість чисел із %d розрядів: %lld\n", r, result);
+
+    return 0;
+}
+
